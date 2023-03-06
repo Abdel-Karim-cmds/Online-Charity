@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Online Charity Managment</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="apple-touch-icon" href="assets/img/apple-icon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/boxicon.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="assets/css/Home.css">
+    
+    <link rel="stylesheet" href="assets/css/custom.css">
+    <style>
+        .btn{
+        background-color: #fdd55a ;
+        color: #006b57;
+        border-radius: 16px 14px 16px 14px;
+        min-width: 150px;
+        min-height: 40px;
+        font-size: large;
+      }
+      .btn:hover{
+        background-color: #006b57;
+        color: #fdd55a;
+      }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <nav id="main_nav" class="navbar navbar-expand-lg navbar-light bg-white shadow">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a class="navbar-brand h1" href="index.html">
+                <i class='bx bx-buildings bx-sm text-dark'></i>
+                <span class="text-dark h4">Online</span> <span class="text-warning h4">Charity</span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
+                <div class="flex-fill mx-xl-5 mb-2">
+                    <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-warning rounded-pill px-3" href="/">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-warning rounded-pill px-3" href="/charity">Charity</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-warning rounded-pill px-3" href="/Organization/Organization_home">Organizations</a>
+    
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-warning rounded-pill px-3" href="/donate">Donate</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn-outline-warning rounded-pill px-3" href="/contact-us">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar align-self-center d-flex">
+                    <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-dark'></i></a>
+                    <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-dark'></i></a>
+                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"><i class='bx bx-user-circle bx-sm text-dark'></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/login-page" id="login">Login</a></li>
+                        <li><a class="dropdown-item" href="/my-profile" id="profile">Profile</a></li>
+                        <li><a class="dropdown-item" href="/logout" id="logout">Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- Close Header -->
+
+
+    <!-- Start Banner Hero -->
+    <div class="banner-wrapper bg-light">
+        <div id="index_banner" class="banner-vertical-center-index container-fluid pt-5">
+
+            <!-- Start slider -->
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"></li>
+                    <li data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+
+                        <div class="py-5 row d-flex align-items-center">
+                            <div class="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
+                                <h1 class="banner-heading h1 text-success display-3 mb-0 pb-5 mx-0 px-0 light-300 typo-space-line">
+                                    <strong>Changing the World,</strong>
+                                  <br> <strong>One Cause at a time</strong>
+                              </h1>
+                                <p class="banner-body text-muted py-3 mx-0 px-0">
+                                    Sit laborum ab, eius fugit doloribus tenetur 
+                                    fugiat, temporibus enim commodi iusto libero magni deleniti quod quam 
+                                    consequuntur! Commodi minima excepturi repudiandae velit hic maxime
+                                    doloremque. Quaerat provident commodi consectetur veniam similique ad 
+                                    earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo 
+                                    fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore 
+                                    suscipit quas? Nulla, placeat. 
+                              </p>
+                                <a class="btn" href="/donate" role="button">Get Started</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="carousel-item">
+
+                        <div class="py-5 row d-flex align-items-center">
+                            <div class="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
+                                <h1 class="banner-heading h1 text-secondary display-3 mb-0 pb-3 mx-0 px-0 light-300">                                  
+                                    <strong>About Us</strong>
+                                </h1>
+                                <p class="banner-body text-muted py-3">
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+                                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+                                    obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+                                    nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+                                    tenetur error, harum nesciunt ipsum debitis quas aliquid.
+                                </p>
+                                <a class="btn" href="/donate" role="button">Get Started</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="carousel-item">
+
+                        <div class="py-5 row d-flex align-items-center">
+                            <div class="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
+                                <h1 class="banner-heading h1 text-secondary display-3 mb-0 pb-3 mx-0 px-0 light-300">
+                                    <strong>Small Acts of Kindness</strong>                                  
+                                    <br><strong>Big Impact on Lives</strong>
+                                    
+                                    
+                                </h1>
+                                <p class="banner-body text-muted py-3">
+                                    Reprehenderit,
+                                    quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos 
+                                    sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
+                                    recusandae alias error harum maxime adipisci amet laborum. Perspiciatis 
+                                    minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit 
+                                    quibusdam sed amet tempora.
+                                </p>
+                                <a class="btn" href="/donate" role="button">Get Started</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <a class="carousel-control-prev text-decoration-none" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                    <i class='bx bx-chevron-left'></i>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next text-decoration-none" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                    <i class='bx bx-chevron-right'></i>
+                    <span class="visually-hidden">Next</span>
+                </a>
+            </div>
+            <!-- End slider -->
+
+        </div>
+    </div>
+    <!-- End Banner Hero -->
+
+
+
+    <!-- Start Recent Work -->
+    <section class="py-5 mb-5">
+        <div class="container">
+            <div class="recent-work-header row text-center pb-5">
+                <h2 class="col-md-6 m-auto h2 semi-bold-600 py-5">Recent Charities</h2>
+            </div>
+
+
+<!-- Carousel -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
+
+  <!-- Indicators/dots -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+  </div>
+  
+  <!-- The slideshow/carousel -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      {{!-- <img src="la.jpg" alt="Los Angeles" class="d-block" style="width:100%"> --}}
+      <div class="carousel-text">
+        <h1>Welfare Organizaion</h1>
+        <p>They contrivvuted 4.7 Millions in a car crash incident</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      {{!-- <img src="chicago.jpg" alt="Chicago" class="d-block" style="width:100%"> --}}
+      <div class="carousel-text">
+        <h1>Welfare Organizaion</h1>
+        <p>They contrivvuted 4.7 Millions in a car crash incident</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      {{!-- <img src="./assets/images/Car crash.jpg" alt="New York" class="d-block" style="width:100%"> --}}
+      <div class="carousel-text">
+        <h1>Welfare Organizaion</h1>
+        <p>They contrivvuted 4.7 Millions in a car crash incident</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Left and right controls/icons -->
+  <div class="carousel-recent">
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</div>
+
+        </div>
+    </section>
+    <!-- End Recent Work -->
+
+
+
+    <!-- Start Footer -->
+    <footer class="bg-success pt-4">
+        <div class="container">
+            <div class="row py-4">
+
+                <div class="col-lg-3 col-12 align-left">
+                    <a class="navbar-brand" href="index.html">
+                        <!--<i class='bx bx-buildings bx-sm text-light'></i> -->
+                    </a>
+                    <p class="text-light my-lg-4 my-2">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                        sed do eiusmod tempor incididunt ut.
+                    </p>
+                    <ul class="list-inline footer-icons light-300">
+                        <li class="list-inline-item m-0">
+                            <a class="text-light" target="_blank" href="http://facebook.com/">
+                                <i class='bx bxl-facebook-square bx-md'></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item m-0">
+                            <a class="text-light" target="_blank" href="https://www.linkedin.com/">
+                                <i class='bx bxl-linkedin-square bx-md'></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item m-0">
+                            <a class="text-light" target="_blank" href="https://www.whatsapp.com/">
+                                <i class='bx bxl-whatsapp-square bx-md'></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item m-0">
+                            <a class="text-light" target="_blank" href="https://www.flickr.com/">
+                                <i class='bx bxl-flickr-square bx-md'></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item m-0">
+                            <a class="text-light" target="_blank" href="https://www.medium.com/">
+                                <i class='bx bxl-medium-square bx-md' ></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-4 my-sm-0 mt-4">
+                    <h3 class="h4 pb-lg-3 text-light light-300">Our Company</h2>
+                        <ul class="list-unstyled text-light light-300">
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.html">Home</a>
+                            </li>
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="about.html">About Us</a>
+                            </li>
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="work.html">Work</a>
+                            </li>
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a class="text-decoration-none text-light py-1" href="pricing.html">Price</a>
+                            </li>
+                            <li class="pb-2">
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="contact.html">Contact</a>
+                            </li>
+                        </ul>
+                </div>
+
+
+                <div class="col-lg-3 col-md-4 my-sm-0 mt-4" align="right">
+                    <h2 class="h4 pb-lg-3 text-light light-300">For Client</h2>
+                    <ul class="list-unstyled text-light light-300">
+                        <li class="pb-2">
+                            <i class='bx-fw bx bx-phone bx-xs'></i><a class="text-decoration-none text-light py-1" href="tel:010-020-0340">010-020-0340</a>
+                        </li>
+                        <li class="pb-2">
+                            <i class='bx-fw bx bx-mail-send bx-xs'></i><a class="text-decoration-none text-light py-1" href="mailto:info@company.com">info@company.com</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+
+
+    <!-- Bootstrap -->
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    
+    <script src="assets/js/home.js"></script>
+
+</body>
+
+</html>

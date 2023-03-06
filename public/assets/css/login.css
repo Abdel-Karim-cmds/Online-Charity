@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    /* background-image: url('../images/Login_backgroud.jpeg'); */
+    background-color: #006b57;
+}
+
+section {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    /* background-image: url('./assets/images/Login_backgroud.jpeg'); */
+    transition: 0.5s;
+}
+
+section .container {
+    position: relative;
+    width: 100%;
+    height: 45em;
+    /* background: rgba(255, 255, 255, 0.85); */
+    background-color: rgba(255, 255, 255, 0.13);
+    /* box-sizing: 0 15px 50px rgba(0, 0, 0, 0.1); */
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+    overflow: hidden;
+}
+
+section .container .user {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+section .container .user .imgBx {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    transition: 0.5s;
+    justify-content: center;
+    text-align: center;
+    border-right: 2px solid black;
+}
+
+section .container .user .imgBx h3 {
+    margin-top: 15%;
+    font-size: 18xp;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #fdd55a;
+}
+
+section .container .user .imgBx .txtBus {
+    width: 100%;
+    font-size: 2em;
+    color: #fdd55a;
+    padding: 80px;
+}
+
+section .container .user .imgBx a {
+    width: 100%;
+    margin-left: 60%;
+    height: 100%;
+    color: black;
+}
+
+section .container .user .imgBx .business {
+    position: relative;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #fdd55a;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+section .container .user .imgBx img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section .container .user .formBx {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    transition: 0.5s;
+}
+
+section .container .user .formBx h2 {
+    font-size: 18xp;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    color: #fdd55a;
+}
+
+section .container .user .formBx input,
+section .container .user .formBx textarea {
+    width: 100%;
+    padding: 10px;
+    color: #557;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    margin: 8px 0px;
+    letter-spacing: 1px;
+    font-weight: 300;
+}
+
+textarea {
+    height: 5em;
+}
+
+section .container .user .formBx input[type="submit"] {
+    max-width: 100px;
+    background: #fabd08;
+    color: whitesmoke;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 100;
+    letter-spacing: 1px;
+    transition: 0.5s;
+}
+
+section .container .user .signupBx .formBx input[type="submit"] {
+    background: #888;
+}
+
+section .container .user .formBx .signup {
+    position: relative;
+    margin-top: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #fabd08;
+    text-transform: uppercase;
+    font-weight: 300;
+}
+
+section .container .user .formBx .signup a {
+    font-weight: 600;
+    text-decoration: none;
+    color: #fdd55a;
+}
+
+section .container .user .formBx .signupBx {
+    display: none;
+}
+
+section .container .signupBx {
+    pointer-events: none;
+}
+
+section .container.active .signupBx {
+    pointer-events: initial;
+}
+
+section .container .signupBx .formBx {
+    top: 100%;
+    transition: 2s;
+}
+
+section .container.active .signupBx .formBx {
+    top: 0;
+}
+
+section .container .signupBx .imgBx {
+    top: -100%;
+    transition: 2s;
+}
+
+section .container .signinBx {
+    top: 0;
+    transition: 2s;
+}
+
+section .container.active .signinBx .formBx {
+    top: -100%;
+    transition: 2s;
+}
+
+section .container .signinBx .formBx {
+    top: 0;
+    transition: 2s;
+}
+
+section .container.active .signinBx .formBx {
+    top: -100%;
+    transition: 2s;
+}
+
+
+/* .container{
+    overflow: auto;
+    resize: both;
+} */
+
+.pop-up {
+    background-color: #12c0a0;
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    transition: 2s;
+    box-shadow: #fabd08;
+    border: 3px solid #fabd08
+}
+
+.pop-up>* {
+    text-align: center;
+    width: 100%;
+}
+
+.pop-up button {
+    width: fit-content !important;
+}
+
+.pop-up.hide {
+    /* top: -100; */
+    z-index: -1000;
+    display: none;
+    /* transition: 2s; */
+}
+
+.btn {
+    color: #fff !important;
+    background: #fabd08;
+}

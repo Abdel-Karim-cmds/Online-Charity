@@ -1,0 +1,79 @@
+body {
+    overflow-x: hidden;
+    font-family: "Open Sans";
+}
+
+.landing-image img {
+    width: 100%;
+}
+
+.headers {
+    text-align: center;
+    margin-top: 2em;
+    font-family: "Open Sans";
+}
+
+.headers h1 {
+    font-size: 2em;
+    text-align: center;
+    color: #006b57;
+    font-weight: 500;
+    font-family: "Open Sans";
+}
+
+.pictures {
+    text-align: center;
+}
+
+.pictures img {
+    height: 15%;
+    width: 90%;
+}
+
+.inner-container {
+    padding: 20px;
+}
+
+.inner-container p {
+    font-family: "Open Sans";
+    color: #909099;
+    font-size: 1em !important;
+}
+
+.inner-container h2 {
+    text-align: center;
+    font-size: 1.3em !important;
+}
+
+
+/* For responsiveness */
+
+@media (min-width: 900px) {
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .inner-container p {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .pictures img {
+        height: 10em !important;
+        width: 19em !important;
+    }
+
+    .inner-container {
+        padding-left: 2.2em;
+    }
+
+    .inner-container p {
+        font-size: 1em;
+    }
+
+    .inner-container h2 {
+        font-size: 1em;
+    }
+}
