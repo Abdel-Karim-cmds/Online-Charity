@@ -229,12 +229,16 @@ app.put('/update-details', (request, response) => {
     log(request.body)
     log(request.query)
     const { table, id } = request.query
-    const { Fname, Lname, Phone, Email } = request.body
-    const sql = `UPDATE donors SET First_Name = '${Fname}', Last_Name = '${Lname}', Phone = '${Phone}', Email = '${EncEmail(Email)}' where Donor_ID = ${id}`
-    const sql2 = '';
+    const { Fname, Lname, Phone, Email, Name, Description, Address } = request.body
+    const sql = `UPDATE donors SET First_Name = '${Fname}', Last_Name = '${Lname}', Phone = '${Phone}', Email = '${EncEmail(Email)}' where Donor_ID = '${id}'`
+    const sql2 = `UPDATE organizations SET Name = '${Name}', Email = '${EncEmail(Email)}', Description = '${Description}', Address = '${Address}' where Organization_ID = '${id}'`;
     connection.query(table === 'donors' ? sql : sql2, (error, result) => {
         if (error) throw error;
-        console.log(result)
+        // console.log(result)
+        console.log("Updated")
+        return response.status(200).json({
+            message: 'User updated successfully'
+        })
     })
 })
 
