@@ -9,7 +9,21 @@
 function populateTable(donations) {
     var count = 1;
     const table = document.getElementById('table')
-    donations.forEach(donation => {
+
+
+    for (let index = 0; index < donations.length; index++) {
+        const donation = donations[index];
+        console.log(donation);
+        const donateDate = new Date(donation.Date_Ending)
+        const today = new Date()
+
+        console.log(donateDate)
+        console.log(today)
+        console.log(donateDate > today)
+
+        if (today > donateDate) {
+            continue
+        }
 
         let row = document.createElement('tr')
         count % 2 == 0 ? row.classList = 'table-warning' : row.classList = 'table-success'
@@ -39,7 +53,8 @@ function populateTable(donations) {
 
 
         let actions = document.createElement('td')
-        let donateButton = document.createElement('button')
+        let donateButton = document.createElement('a')
+        donateButton.href = `/donate/${donation.Donation_ID}`
         donateButton.className = 'btn btn-success'
         donateButton.innerText = "DONATE"
         actions.appendChild(donateButton)
@@ -47,12 +62,11 @@ function populateTable(donations) {
 
         row.appendChild(orgName)
         row.appendChild(orgEmail)
-            // row.appendChild(donID)
         row.appendChild(datePosted)
         row.appendChild(dateEnding)
         row.appendChild(item)
         row.appendChild(actions)
         table.appendChild(row)
         count++;
-    })
+    }
 }

@@ -168,7 +168,6 @@ app.get('/charity', (request, response) => {
 //Organization viewing their donations
 app.get("/organization-profile/view-donation-posted", (request, response) => {
     response.render('./Organization/donations_posted')
-
 })
 
 //Get method to send the donations posted by an organization
@@ -233,6 +232,27 @@ app.get('/get-data', (request, response) => {
     })
 })
 
+app.get('/donate/:id', (request, response) => {
+    const { user } = request.cookies
+    if (user === 'donor')
+        return response.render('donations/donate_form')
+    return response.redirect('/login-page')
+})
+
+app.get('/donations', (request, response) => {
+    log(request.query)
+    const { id } = request.query
+    let sql = `SELECT donations_posted.Donation_ID, donations_posted.Date_Posted, donations_posted.Items_needed, donations_posted.Date_Ending, organizations.Name, organizations.Email, organizations.Organization_ID FROM donations_posted INNER JOIN organizations on donations_posted.Organization_ID = organizations.Organization_ID WHERE donations_posted.Donation_ID = '${id}'`
+
+
+    connection.query(sql, (error, result) => {
+        // connection.query(`SELECT * FROM donations_posted where Donation_ID = '${id}'`, (error, result) => {
+        if (error) throw error;
+        console.log(result)
+        response.send(result)
+    })
+})
+
 //Function to update user details
 app.put('/update-details', (request, response) => {
     log(2)
@@ -276,6 +296,10 @@ app.get('/view-donations_posted', (request, response) => {
 
 app.get('/:table/edit/:id', (request, response) => {
     response.render('admin/edit')
+})
+
+app.post('/post-donation', (request, response) => {
+    log(request.body)
 })
 
 //Function to signup the donor
@@ -380,7 +404,6 @@ app.post('/login', async(request, response) => {
     }
 
 })
-
 
 //Signin
 app.post('/sign-in', (request, response) => {

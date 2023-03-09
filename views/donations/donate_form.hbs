@@ -10,22 +10,23 @@
     <link href="../../assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
     <link rel="stylesheet" href="../../assets/css/donations/organization.css">
-    
+
     <style>
-        .btn{
-        background-color: #fdd55a ;
-        color: #006b57;
-        border-radius: 16px 14px 16px 14px;
-        min-width: 150px;
-        min-height: 40px;
-        font-size: large;
-      }
-      .btn:hover{
-        background-color: #006b57;
-        color: #fdd55a;
-      }
+        .btn {
+            background-color: #fdd55a;
+            color: #006b57;
+            border-radius: 16px 14px 16px 14px;
+            min-width: 150px;
+            min-height: 40px;
+            font-size: large;
+        }
+
+        .btn:hover {
+            background-color: #006b57;
+            color: #fdd55a;
+        }
     </style>
 </head>
 
@@ -37,11 +38,14 @@
                 <i class='bx bx-buildings bx-sm text-dark'></i>
                 <span class="text-dark h4">Online</span> <span class="text-warning h4">Charity</span>
             </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbar-toggler-success" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between" id="navbar-toggler-success">
+            <div class="align-self-center collapse navbar-collapse flex-fill  d-lg-flex justify-content-lg-between"
+                id="navbar-toggler-success">
                 <div class="flex-fill mx-xl-5 mb-2">
                     <ul class="nav navbar-nav d-flex justify-content-between mx-xl-5 text-center text-dark">
                         <li class="nav-item">
@@ -51,8 +55,9 @@
                             <a class="nav-link btn-outline-warning rounded-pill px-3" href="/charity">Charity</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn-outline-warning rounded-pill px-3" href="/Organization">Organizations</a>
-    
+                            <a class="nav-link btn-outline-warning rounded-pill px-3"
+                                href="/Organization">Organizations</a>
+
                         </li>
                         {{!-- <li class="nav-item">
                             <a class="nav-link btn-outline-warning rounded-pill px-3" href="/donate">Donate</a>
@@ -65,7 +70,8 @@
                 <div class="navbar align-self-center d-flex">
                     <a class="nav-link" href="#"><i class='bx bx-bell bx-sm bx-tada-hover text-dark'></i></a>
                     <a class="nav-link" href="#"><i class='bx bx-cog bx-sm text-dark'></i></a>
-                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"><i class='bx bx-user-circle bx-sm text-dark'></i></a>
+                    <a class="nav-link" href="#" role="button" data-bs-toggle="dropdown"><i
+                            class='bx bx-user-circle bx-sm text-dark'></i></a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="/login-page" id="login">Login</a></li>
                         <li><a class="dropdown-item" href="/my-profile" id="profile">Profile</a></li>
@@ -77,33 +83,39 @@
     </nav>
     <!-- Close Header -->
 
+    <div class="box">
+        <h1>About the donation</h1>
+        <p>
+            This donation was created by <span id="name"></span>
+        </p>
+        <p>
+            The goal is to collect <span id="goal"></span> before <span id="date"></span>
+        </p>
 
-    <div class="table-responsive">
-        <table class="table table-striped-columns
-        table-hover	
-        table-borderless
-        table-warning
-        align-middle">
-            <thead class="table-dark">
-                <caption>List of Organizations</caption>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Date Started</th>
-                    <th>Date Ending</th>
-                    <th>Item Needed</th>
-                    <th>Donate</th>
-                </tr>
-                </thead>
-                <tbody class="table-group-divider" id="table">
-                </tbody>
-                <tfoot>
-                    
-                </tfoot>
-        </table>
+        <form id="donation_form">
+            <label for="items">Item</label>
+            <select id="items" name="items" required>
+                <option value="Cash">Cash</option>
+                <option value="Food">Food</option>
+                <option value="Hygiene products">Hygiene products</option>
+                <option value="Clothes">Clothes</option>
+                <option value="Books">Books</option>
+                <option value="Toys">Toys</option>
+                <option value="Gadgets">Gadgets</option>
+                <option value="Homeware">Homeware</option>
+            </select>
+            <label for="amount">
+                Amount
+            </label>
+            <input type="text" name="amout" id="amount">
+            <label for="anonymous">Would you like to be anonymous?</label>
+            <input type="checkbox" name="anonymous" id="anonymous">
+            <input type="submit" value="Submit">
+        </form>
+
     </div>
-    
 
+    <button class="btn btn-success" id="unique" data-toggle="modal" data-target="#someBox" style="display: none;">BTN</button>
     <!-- Start Footer -->
     <footer class="bg-success pt-4">
         <div class="container">
@@ -140,7 +152,7 @@
                         </li>
                         <li class="list-inline-item m-0">
                             <a class="text-light" target="_blank" href="https://www.medium.com/">
-                                <i class='bx bxl-medium-square bx-md' ></i>
+                                <i class='bx bxl-medium-square bx-md'></i>
                             </a>
                         </li>
                     </ul>
@@ -150,19 +162,24 @@
                     <h3 class="h4 pb-lg-3 text-light light-300">Our Company</h2>
                         <ul class="list-unstyled text-light light-300">
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light" href="index.html">Home</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
+                                    class="text-decoration-none text-light" href="index.html">Home</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="about.html">About Us</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
+                                    class="text-decoration-none text-light py-1" href="about.html">About Us</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="work.html">Work</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
+                                    class="text-decoration-none text-light py-1" href="work.html">Work</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a class="text-decoration-none text-light py-1" href="pricing.html">Price</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a
+                                    class="text-decoration-none text-light py-1" href="pricing.html">Price</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="contact.html">Contact</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
+                                    class="text-decoration-none text-light py-1" href="contact.html">Contact</a>
                             </li>
                         </ul>
                 </div>
@@ -172,10 +189,12 @@
                     <h2 class="h4 pb-lg-3 text-light light-300">For Client</h2>
                     <ul class="list-unstyled text-light light-300">
                         <li class="pb-2">
-                            <i class='bx-fw bx bx-phone bx-xs'></i><a class="text-decoration-none text-light py-1" href="tel:010-020-0340">010-020-0340</a>
+                            <i class='bx-fw bx bx-phone bx-xs'></i><a class="text-decoration-none text-light py-1"
+                                href="tel:010-020-0340">010-020-0340</a>
                         </li>
                         <li class="pb-2">
-                            <i class='bx-fw bx bx-mail-send bx-xs'></i><a class="text-decoration-none text-light py-1" href="mailto:info@company.com">info@company.com</a>
+                            <i class='bx-fw bx bx-mail-send bx-xs'></i><a class="text-decoration-none text-light py-1"
+                                href="mailto:info@company.com">info@company.com</a>
                         </li>
                     </ul>
                 </div>
@@ -185,11 +204,34 @@
     </footer>
     <!-- End Footer -->
 
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="unique">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Bootstrap -->
     <script src="../../assets/js/bootstrap.bundle.min.js"></script>
-    
-    <script src="assets/js/donations/view_donations.js"></script>
+
+    <script src="../assets/js/donations/donate_form.js"></script>
 
 </body>
 
