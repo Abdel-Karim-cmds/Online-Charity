@@ -173,8 +173,18 @@ app.get("/organization-profile/view-donation-posted", (request, response) => {
 
 //Get method to send the donations posted by an organization
 app.get('/get-donations', (request, response) => {
+
+    // log("Here")
     const { origin } = request.query
-    let sql = `SELECT * FROM donations_posted where Organization_ID = '${request.session.user.Organization_ID}'`;
+        // log(origin)
+    let orgID;
+    try {
+        orgID = request.session.user.Organization_ID || ''
+    } catch (error) {
+        log("Nothing to see here")
+    }
+
+    let sql = `SELECT * FROM donations_posted where Organization_ID = '${orgID}'`;
     let sql2 = `SELECT donations_posted.Donation_ID, donations_posted.Date_Posted, donations_posted.Items_needed, donations_posted.Date_Ending, organizations.Name, organizations.Email FROM donations_posted INNER JOIN organizations on donations_posted.Organization_ID = organizations.Organization_ID ORDER BY donations_posted.Date_Posted`
     connection.query(origin ? sql : sql2, function(err, rows, fields) {
         if (err) throw err;
@@ -389,6 +399,10 @@ app.post('/sign-in', (request, response) => {
     })
 })
 
+
+app.get('/Organization', (request, response) => {
+    response.render('donations/organizations')
+})
 
 //Function to encrypt Emails
 function EncEmail(email) {
