@@ -9,7 +9,7 @@
   <meta name="generator" content="Hugo 0.72.0">
   <title>Home</title>
 
-  <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/dashboard/">
+ <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/dashboard/">
 
 
 
@@ -22,7 +22,18 @@
     integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
     crossorigin="anonymous"></script>
 
+   
+
+
   <style>
+    @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans";
+    font-size: 1.2 rem;
+}
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -103,6 +114,10 @@
       text-transform: uppercase;
     }
 
+    .nav.navbar.navbar-dark:sticky-top bg-dark flex-md-nowrap p-0 shadow{
+      background-color: #006b57;
+    }
+
     /*Navbar*/
     .navbar-brand {
       padding-top: .75rem;
@@ -123,15 +138,27 @@
       border-radius: 0;
     }
 
+    .navbar-nav{
+      background-color: #006b57;
+    }
+
+    .navbar-nav-px-3{
+      background-color: #006b57;
+    }
+
     .form-control-dark {
       color: #fff;
-      background-color: rgba(255, 255, 255, .1);
-      border-color: rgba(255, 255, 255, .1);
+      background-color: #006b57;
+      border-color: #006b57;
     }
 
     .form-control-dark:focus {
       border-color: transparent;
       box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+    }
+
+    #Nam{
+      color: #fdd55a
     }
   </style>
 </head>
@@ -144,7 +171,7 @@
       data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    {{!-- <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">--}}
     <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">
         <a class="nav-link" href="/logout">Sign out</a>

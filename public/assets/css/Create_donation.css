@@ -252,3 +252,8 @@ td {
     display: flex;
     flex-direction: column;
 }
+
+.btn-btn-success{
+    background-color: #006b57;
+
+}
