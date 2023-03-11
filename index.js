@@ -52,7 +52,7 @@ const connection = mysql.createConnection({
     user: 'root',
     password: '',
     database: 'online_charity',
-    // port: '3308'
+    port: '3308'
 });
 
 //establish the connection to the database
