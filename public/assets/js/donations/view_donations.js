@@ -26,7 +26,7 @@ function populateTable(donations) {
         }
 
         let row = document.createElement('tr')
-        count % 2 == 0 ? row.classList = 'table-warning' : row.classList = 'table-success'
+        row.classList = "colorbg";
         let donID = document.createElement('td')
         let textID = document.createTextNode(donation.Donation_ID)
         donID.appendChild(textID)

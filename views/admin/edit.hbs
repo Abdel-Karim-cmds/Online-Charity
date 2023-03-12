@@ -12,6 +12,32 @@
 
     
     <title>Admin Dashboard</title>
+
+    <style>
+      #donors td, #organization td {
+        padding: 5px 20px;
+        vertical-align: top;
+      }
+      #donors label ,#organization label{
+        display: block;
+        margin-bottom: 5px;
+      }
+      #donors input ,#organization input{
+        width: 100%;
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+
+      #donors .submit-btn, #organization .submit-btn{
+        margin-top: 20px;
+        padding: 20px;
+
+      }
+
+
+    </style>
 </head>
 
 <body>
@@ -78,36 +104,74 @@
             </nav>
 
             <main class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                {{!-- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Edit Page</h1>
-                </div>
+                </div> --}}
 
-                <h2>Edit Information</h2>
+                <h3>Edit Information</h3>
 
                 <form id="donors">
-                  <label for="First_Name">First Name</label>
-                  <input type="text" id="Fname" name="First_Name">
-                  <label for="Last_Name"> Last Name</label>
-                  <input type="text" id="Lname" name="Last_Name">
-                  <label for="Phone">Phone</label>
-                  <input type="text" id="Phone" name="Phone">
-                  <label for="emailD">Email</label>
-                  <input type="text" id="emailD" name="emailD">
+                  <table>
+                    <tbody>
+                  <tr>
+                    <td>
+                    <label for="First_Name">First Name</label>
+                    <input type="text" id="Fname" name="First_Name">
+                    </td>
+                    <td>
+                    <label for="Last_Name"> Last Name</label>
+                    <input type="text" id="Lname" name="Last_Name">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                    <label for="Phone">Phone</label>
+                    <input type="text" id="Phone" name="Phone">
+                    </td>                 
+                    <td>
+                    <label for="emailD">Email</label>
+                    <input type="text" id="emailD" name="emailD">
+                    </td>
+                  </tr>
+                  </tbody>
+                  </table>
+                  <div class="submit-btn">
                   <button class="btn btn-primary" data-toggle="modal" data-target="#confirmBox">Submit</button>
+                  </div>
                 </form>
 
                 <form id="organization">
-                  <label for="Name">Name</label>
-                  <input type="text" id="Name" name="Name">
-                  <label for="orgEmail"> Email</label>
-                  <input type="text" id="orgEmail" name="orgEmail">
-                  <label for="Description">Description</label>
-                  <input type="text" id="Description" name="Description">
-                  <label for="PhoneO">Phone</label>
-                  <input type="text" id="PhoneO" name="PhoneO">
-                  <label for="Address">Address</label>
-                  <input type="address" id="Address" name="Address">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <label for="Name">Name</label>
+                          <input type="text" id="Name" name="Name">
+                        </td>
+                        <td>
+                          <label for="orgEmail"> Email</label>
+                          <input type="text" id="orgEmail" name="orgEmail">
+                        </td>
+                        <td>
+                          <label for="Description">Description</label>
+                          <input type="text" id="Description" name="Description">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <label for="PhoneO">Phone</label>
+                          <input type="text" id="PhoneO" name="PhoneO">
+                        </td>
+                        <td>
+                          <label for="Address">Address</label>
+                          <input type="address" id="Address" name="Address">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="submit-btn">
                   <button class="btn btn-primary" data-toggle="modal" data-target="#confirmBox">Submit</button>
+                  </div>
                 </form>
  
             </main>

@@ -1,3 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans";
+    font-size: 1.2 rem;
+}
+
 .bd-placeholder-img {
     font-size: 1.125rem;
     text-anchor: middle;
@@ -36,7 +45,7 @@ body {
     padding: 48px 0 0;
     /* Height of navbar */
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-    background-color: #006b57 !important;
+    /* background-color: #006b57 !important; */
     /* color: #fdd55a; */
 }
 
@@ -59,7 +68,7 @@ body {
 .sidebar .nav-link {
     font-weight: 500;
     /* color: #333; */
-    color: #fdd55a;
+    color: #006b57;
 }
 
 .sidebar .nav-link .feather {
@@ -71,6 +80,7 @@ body {
 .sidebar .nav-link.active {
     /* color: #1f1aaa; */
     background-color: whitesmoke;
+    color:#fdd55a;
 }
 
 .sidebar .nav-link:hover .feather,
@@ -122,3 +132,8 @@ body {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+
+#Nam{
+    color: #fdd55a;
+    background-color: #006b57 !important;
+  }
