@@ -52,7 +52,7 @@ const connection = mysql.createConnection({
     user: 'root',
     password: '',
     database: 'online_charity',
-    port: '3308'
+    // port: '3308'
 });
 
 //establish the connection to the database
@@ -211,8 +211,8 @@ app.delete('/delete-target', (request, response) => {
         if (err) throw err
         console.log("Delete Successfully")
     })
-    response.status(500).json({
-        message: 'There was an error whlie deleting'
+    response.status(200).json({
+        message: 'Deleted Successfully'
     })
 })
 
@@ -280,9 +280,6 @@ app.delete('/delete-donation', (request, response) => {
     connection.query(`DELETE FROM donations_posted where Donation_ID = '${id}'`, (err, result) => {
         if (err) throw err;
         console.log("Successfully deleted")
-            // response.status(200).json({
-            //     message: 'Deleted succesffully'
-            // })
 
     })
     response.status(500).json({
@@ -298,8 +295,49 @@ app.get('/:table/edit/:id', (request, response) => {
     response.render('admin/edit')
 })
 
+
+//Submmit a donation made by the user
 app.post('/post-donation', (request, response) => {
     log(request.body)
+    const {item, amount, anonymous,org} = request.body
+    const {Donor_ID} = request.session.user
+    const now = new Date()
+        // const today = now.toISOString().split('T')[0]
+    const today = moment(now, 'YYYY-MM-DD', 'UTC').format()
+    // log(request.session.user)
+    connection.query(`INSERT INTO donations values ('${uuid4()}', '${org}', '${Donor_ID}',  '${item}', ${parseInt(amount)}, '${today}', 'NO', '${anonymous}')`,(err,result)=>{
+        if(err) throw err;
+        log(result)
+        log("Inserted succesfully")
+        return response.status(200).json({
+            message: 'Successful insertion'
+        })
+    })
+})
+
+
+//GET method to get the donations a user made
+app.get('/get-user-donations',(request,response)=>{
+    const {id} = request.query
+    log(id)
+    console.log(request.query)
+    // connection.query(`SELECT item_donated, amount, Date_donated, Received FROM donations WHERE Donor_ID = '${id}'`,(error,rows,fields)=>{
+    connection.query(`SELECT donations.item_donated, donations.amount, donations.Date_donated, donations.Received, organizations.Name FROM donations INNER JOIN organizations on donations.Organization_ID = organizations.Organization_ID `,(error,rows,fields)=>{
+        if(error) throw error
+        // var results = rows;
+        // var res = [];
+        // for (let index = 0; index < results.length; index++) {
+        //     const element = results[index];
+        //     element.Date_Posted = JSON.parse(JSON.stringify(moment(element.Date_Posted, 'YYYY-MM-DD', 'UTC').format()))
+        //     element.Date_Ending = JSON.parse(JSON.stringify(moment(element.Date_Ending, 'YYYY-MM-DD', 'UTC').format()))
+        //     if (element.Email)
+        //         element.Email = decEmail(element.Email)
+        //     res.push(element)
+        // }
+        // response.send(rows);
+        console.log(rows)
+        response.send(rows)
+    })
 })
 
 //Function to signup the donor
@@ -422,7 +460,39 @@ app.post('/sign-in', (request, response) => {
     })
 })
 
+app.get('/organization-donations',(request,response)=>{
+    // response.render('Organization-donations')
+    console.log(request.session.user)
+    const {Organization_ID} = request.session.user
+    let results = []
+    // connection.query(`SELECT * FROM donations where Organization_ID = '${Organization_ID}'`,(error,rows)=>{
+    // connection.query(`SELECT * FROM donations INNER JOIN donors on donors.Donor_ID = donations.Donor_ID `,(error,rows)=>{
+        connection.query(`SELECT donations.REF, donations.Amount, donations.Date_donated,donations.Item_donated, donations.Received, donations.Anonymous, donors.First_Name, donors.Email, donors.Phone FROM donations INNER JOIN donors on donors.Donor_ID = donations.Donor_ID where donations.Organization_ID = '${Organization_ID}'`,(error,rows)=>{
+        if (error) throw error;
+        for (let i = 0; i < rows.length; i++) {
+            const element = rows[i];
+            // log(element.Date_donated)
+            element.Date_donated = moment(element.Date_donated, 'YYYY-MM-DD', 'UTC').format()
+            element.Email = decEmail(element.Email)
+            // element.Date_donated = moment(element.Date_donated, 'YYYY-MM-DD', 'UTC').format()
+            // log(element.Date_donated)
+            results.push(element)
+        }
+        log(results)
+        response.send(results)
+    })
+})
 
+app.put('/update-status', (request,response)=>{
+    const {id} = request.query
+    log(id)
+    connection.query(`UPDATE donations SET Received ='YES' WHERE REF = '${id}'`,(error,results)=>{
+        if(error) throw error;
+        return response.status(200).json("Updated succsfully")
+    })
+})
+
+//Get method to render the donations page
 app.get('/Organization', (request, response) => {
     response.render('donations/organizations')
 })

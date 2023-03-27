@@ -1,0 +1,18 @@
+.containers {padding:20px;}
+.popover {width:350px;max-width:1500px;}
+.popover-content h4 {
+  color: #00A1FF;
+}
+.popover-content h4 small {
+  color: black;
+}
+.popover-content button.btn-primary {
+  color: #00A1FF;
+  border-color:#00A1FF;
+  background:white;
+}
+
+.popover-content button.btn-default {
+  color: gray;
+  border-color:gray;
+}

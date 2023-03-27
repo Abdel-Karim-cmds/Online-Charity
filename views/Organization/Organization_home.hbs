@@ -4,12 +4,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Hugo 0.72.0">
   <title>Home</title>
 
- <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/dashboard/">
+  <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/dashboard/">
 
 
 
@@ -22,18 +19,21 @@
     integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
     crossorigin="anonymous"></script>
 
-   
+  <link rel="stylesheet" href="../assets/organization_home.css">
+
 
 
   <style>
     @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Open Sans";
-    font-size: 1.2 rem;
-}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Open Sans";
+      font-size: 1.2 rem;
+    }
+
     .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -91,8 +91,7 @@
 
     .sidebar .nav-link {
       font-weight: 500;
-      color: #006b57
-;
+      color: #006b57;
     }
 
     .sidebar .nav-link .feather {
@@ -114,7 +113,7 @@
       text-transform: uppercase;
     }
 
-    .nav.navbar.navbar-dark:sticky-top bg-dark flex-md-nowrap p-0 shadow{
+    .nav.navbar.navbar-dark:sticky-top bg-dark flex-md-nowrap p-0 shadow {
       background-color: #006b57;
     }
 
@@ -138,11 +137,11 @@
       border-radius: 0;
     }
 
-    .navbar-nav{
+    .navbar-nav {
       background-color: #006b57;
     }
 
-    .navbar-nav-px-3{
+    .navbar-nav-px-3 {
       background-color: #006b57;
     }
 
@@ -157,8 +156,50 @@
       box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
     }
 
-    #Nam{
+    #Nam {
       color: #fdd55a
+    }
+
+
+    .dropbtn {
+      background-color: #04AA6D;
+      color: white;
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      background-color: #3e8e41;
     }
   </style>
 </head>
@@ -291,26 +332,53 @@
           </div>
 
           <div class="row">
-            <div class="col-md-16">
-              <div class="card mb-4 mb-md-0">
-                <div class="card-body">
-                  <p class="mb-4">Your recent <span class="text-primary font-italic me-1">Donations</span>
-                  </p>
-                  <p class="mb-1" style="font-size: .77rem;">children's home</p>
-                  <p class="text-primary font-italic me-1">500KSH</p>
-                  <p class="mt-4 mb-1" style="font-size: .77rem;">Orphanage</p>
-                  <p class="text-primary font-italic me-1">100KSH</p>
-                  <p class="mt-4 mb-1" style="font-size: .77rem;">Church</p>
-                  <p class="text-primary font-italic me-1">2000KSH</p>
-                </div>
-              </div>
+            <div class="table-responsive">
+              <table class="table table-light">
+                <thead>
+                  <tr>
+                    <th scope="col">Donor</th>
+                    <th scope="col">Item</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Dated Received</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Contact them</th>
+                  </tr>
+                </thead>
+                <tbody id="table">
+                  
+                </tbody>
+              </table>
             </div>
+
           </div>
         </div>
       </div>
     </div>
-  </div>
 
+    <!-- Modal for confirmation -->
+    <div class="modal fade" id="confirmBox" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you sure about that?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            This action cannot be reversed
+            {{!-- <p id="donID">some text</p> --}}
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">No</button>
+            <button type="button" class="btn btn-danger" id="confirm">Yes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{!-- End of the modal --}}
 </body>
 <script src="../assets/js/organization/organization_home.js"></script>
+
 </html>
