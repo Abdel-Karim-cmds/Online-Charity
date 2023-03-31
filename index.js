@@ -22,9 +22,6 @@ const oneDay = 1000 * 60 * 60 * 24;
 const oneHour = 1000 * 60 * 60;
 const oneMinute = 1000 * 60;
 
-log(decEmail('1d2c0e3d964945a13d6232a0df33b7e0'))
-log(decPassword('748c010978d675107b830e311f5b9cbc'))
-
 // Setting up the project
 app.set('views', 'views') // Where the pages are going to be stored
 app.set('view engine', 'hbs') // The view engine used
@@ -448,6 +445,11 @@ app.put('/update-status', (request,response)=>{
         if(error) throw error;
         return response.status(200).json("Updated succsfully")
     })
+})
+
+
+app.get('/organization-report',(request,response)=>{
+    response.render('Organization/reports')
 })
 
 //Get method to render the donations page
