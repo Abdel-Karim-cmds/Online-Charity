@@ -22,6 +22,8 @@ const oneDay = 1000 * 60 * 60 * 24;
 const oneHour = 1000 * 60 * 60;
 const oneMinute = 1000 * 60;
 
+log(decEmail('1d2c0e3d964945a13d6232a0df33b7e0'))
+log(decPassword('748c010978d675107b830e311f5b9cbc'))
 
 // Setting up the project
 app.set('views', 'views') // Where the pages are going to be stored
@@ -52,7 +54,7 @@ const connection = mysql.createConnection({
     user: 'root',
     password: '',
     database: 'online_charity',
-    port: '3308'
+    // port: '3308'
 });
 
 //establish the connection to the database
@@ -69,7 +71,6 @@ app.get('/', (request, response) => {
 //Login Page
 app.get('/login-page', (request, response) => {
     const { user } = request.cookies
-
     if (user === 'donor')
         return response.redirect('/')
     if (user === 'organization')
@@ -104,8 +105,9 @@ app.get('/my-profile', (request, response) => {
 //Donate
 app.get('/donate', (request, response) => {
         response.render('./Donors/Donate')
-    })
-    //donation
+})
+
+//donation
 app.get('/organization-profile', (request, response) => {
 
     const { user } = request.cookies
@@ -121,26 +123,17 @@ app.get('/organization-profile/create-donation', (request, response) => {
 
 //Post a donation
 app.post('/create-donation', (request, response) => {
-    // console.log(request.body);
     const { date, item } = request.body
-        // console.log(session.user.Organization_ID)
     const orgID = request.session.user.Organization_ID
-        // console.log(new Date(date).toLocaleDateString())
     const ending = new Date(date)
-        // const someDate = moment(date).format('YYYY-MM-DD')
-        // log(someDate)
-        // const theEnd = ending.toISOString().split('T')[0]
     const theEnd = moment(ending, 'YYYY-MM-DD', 'UTC').format()
     console.log(item)
     const now = new Date()
-        // const today = now.toISOString().split('T')[0]
     const today = moment(now, 'YYYY-MM-DD', 'UTC').format()
     console.log(`Today is ${today}`);
     console.log(`The end is ${theEnd}`);
-    // console.log(new Date().toLocaleDateString())
     try {
         connection.query(`INSERT INTO donations_posted values ('${uuid4()}','${orgID}', '${today}', '${theEnd}', '${item}')`, (err, result) => {
-            // connection.query(`INSERT INTO donations_posted values ('${uuid4()}','something', '${today}', '${theEnd}', '${item}')`, (err, result) => {
             if (err) {
                 console.log(err);
                 return response.status(401).json({
@@ -172,10 +165,7 @@ app.get("/organization-profile/view-donation-posted", (request, response) => {
 
 //Get method to send the donations posted by an organization
 app.get('/get-donations', (request, response) => {
-
-    // log("Here")
     const { origin } = request.query
-        // log(origin)
     let orgID;
     try {
         orgID = request.session.user.Organization_ID || ''
@@ -187,7 +177,6 @@ app.get('/get-donations', (request, response) => {
     let sql2 = `SELECT donations_posted.Donation_ID, donations_posted.Date_Posted, donations_posted.Items_needed, donations_posted.Date_Ending, organizations.Name, organizations.Email FROM donations_posted INNER JOIN organizations on donations_posted.Organization_ID = organizations.Organization_ID ORDER BY donations_posted.Date_Posted`
     connection.query(origin ? sql : sql2, function(err, rows, fields) {
         if (err) throw err;
-        // decEmail("Yo")
         var results = rows;
         var res = [];
         for (let index = 0; index < results.length; index++) {
@@ -203,7 +192,6 @@ app.get('/get-donations', (request, response) => {
 })
 
 app.delete('/delete-target', (request, response) => {
-    log(request.query)
     const { Table, id } = request.query
     let donorSQL = `DELETE FROM donors where Donor_ID = '${id}'`
     let orgSQL = `DELETE FROM organizations where Organization_ID = '${id}'`
@@ -217,7 +205,6 @@ app.delete('/delete-target', (request, response) => {
 })
 
 app.get('/get-data', (request, response) => {
-    log(request.query)
     const { table, id } = request.query
     let sql = `SELECT * FROM ${table} where Donor_ID = '${id}'`
     let sql2 = `SELECT * FROM ${table} where Organization_ID = '${id}'`
@@ -226,8 +213,6 @@ app.get('/get-data', (request, response) => {
         if (error) throw error;
         let res = JSON.parse(JSON.stringify(result))[0]
         res.Email = decEmail(res.Email)
-            // console.log(decEmail(JSON.parse(JSON.stringify(result))[0].Email))
-            // log(res)
         response.send(res)
     })
 })
@@ -243,10 +228,7 @@ app.get('/donations', (request, response) => {
     log(request.query)
     const { id } = request.query
     let sql = `SELECT donations_posted.Donation_ID, donations_posted.Date_Posted, donations_posted.Items_needed, donations_posted.Date_Ending, organizations.Name, organizations.Email, organizations.Organization_ID FROM donations_posted INNER JOIN organizations on donations_posted.Organization_ID = organizations.Organization_ID WHERE donations_posted.Donation_ID = '${id}'`
-
-
     connection.query(sql, (error, result) => {
-        // connection.query(`SELECT * FROM donations_posted where Donation_ID = '${id}'`, (error, result) => {
         if (error) throw error;
         console.log(result)
         response.send(result)
@@ -255,9 +237,6 @@ app.get('/donations', (request, response) => {
 
 //Function to update user details
 app.put('/update-details', (request, response) => {
-    log(2)
-    log(request.body)
-    log(request.query)
     const { table, id } = request.query
     const { Fname, Lname, Phone, Email, Name, Description, Address } = request.body
     const sql = `UPDATE donors SET First_Name = '${Fname}', Last_Name = '${Lname}', Phone = '${Phone}', Email = '${EncEmail(Email)}' where Donor_ID = '${id}'`
@@ -274,9 +253,8 @@ app.put('/update-details', (request, response) => {
 
 //Delete method to delete a donation by an organization
 app.delete('/delete-donation', (request, response) => {
-    // console.log(request.params)
     const { id } = request.query
-    log(id)
+
     connection.query(`DELETE FROM donations_posted where Donation_ID = '${id}'`, (err, result) => {
         if (err) throw err;
         console.log("Successfully deleted")
@@ -295,16 +273,17 @@ app.get('/:table/edit/:id', (request, response) => {
     response.render('admin/edit')
 })
 
+app.get('/report/:view',(request,response)=>{
+    response.render('admin/reports')
+})
+
 
 //Submmit a donation made by the user
 app.post('/post-donation', (request, response) => {
-    log(request.body)
     const {item, amount, anonymous,org} = request.body
     const {Donor_ID} = request.session.user
     const now = new Date()
-        // const today = now.toISOString().split('T')[0]
     const today = moment(now, 'YYYY-MM-DD', 'UTC').format()
-    // log(request.session.user)
     connection.query(`INSERT INTO donations values ('${uuid4()}', '${org}', '${Donor_ID}',  '${item}', ${parseInt(amount)}, '${today}', 'NO', '${anonymous}')`,(err,result)=>{
         if(err) throw err;
         log(result)
@@ -319,22 +298,8 @@ app.post('/post-donation', (request, response) => {
 //GET method to get the donations a user made
 app.get('/get-user-donations',(request,response)=>{
     const {id} = request.query
-    log(id)
-    console.log(request.query)
-    // connection.query(`SELECT item_donated, amount, Date_donated, Received FROM donations WHERE Donor_ID = '${id}'`,(error,rows,fields)=>{
-    connection.query(`SELECT donations.item_donated, donations.amount, donations.Date_donated, donations.Received, organizations.Name FROM donations INNER JOIN organizations on donations.Organization_ID = organizations.Organization_ID `,(error,rows,fields)=>{
+    connection.query(`SELECT donations.item_donated, donations.amount, donations.Date_donated, donations.Received, organizations.Name FROM donations INNER JOIN organizations on donations.Organization_ID = organizations.Organization_ID where donations.Donor_ID = "${id}"  `,(error,rows,fields)=>{
         if(error) throw error
-        // var results = rows;
-        // var res = [];
-        // for (let index = 0; index < results.length; index++) {
-        //     const element = results[index];
-        //     element.Date_Posted = JSON.parse(JSON.stringify(moment(element.Date_Posted, 'YYYY-MM-DD', 'UTC').format()))
-        //     element.Date_Ending = JSON.parse(JSON.stringify(moment(element.Date_Ending, 'YYYY-MM-DD', 'UTC').format()))
-        //     if (element.Email)
-        //         element.Email = decEmail(element.Email)
-        //     res.push(element)
-        // }
-        // response.send(rows);
         console.log(rows)
         response.send(rows)
     })
@@ -342,8 +307,6 @@ app.get('/get-user-donations',(request,response)=>{
 
 //Function to signup the donor
 app.post('/signup-donor', (request, response) => {
-    // const { Donor_Password } = request.body
-    // console.log(request.body)
     let Donor_info = request.body;
     Donor_info.Donor_Email = EncEmail(Donor_info.Donor_Email)
     Donor_info.Donor_Password = EncPass(Donor_info.Donor_Password)
@@ -357,7 +320,6 @@ app.post('/signup-donor', (request, response) => {
 
             console.log("Record inserted")
             return response.status(200).redirect(301, '/login-page')
-                // response.redirect('/login-page')
         })
 
     } catch (error) {
@@ -443,43 +405,39 @@ app.post('/login', async(request, response) => {
 
 })
 
-//Signin
-app.post('/sign-in', (request, response) => {
-    // console.log(request.body)
-    const { email, password } = request.body
-        // console.log(EncEmail(email), EncPass(password))
-    connection.query('SELECT * FROM donors WHERE Email = ? AND Password = ?', [EncEmail(email), EncPass(password)], (error, results, fields) => {
-        if (error) throw error
-        if (results.length) {
-            //Create a session
-            response.redirect('/')
-        } else
-            return response.status(401).json({
-                message: 'User not found'
-            })
-    })
-})
 
 app.get('/organization-donations',(request,response)=>{
     // response.render('Organization-donations')
     console.log(request.session.user)
     const {Organization_ID} = request.session.user
     let results = []
-    // connection.query(`SELECT * FROM donations where Organization_ID = '${Organization_ID}'`,(error,rows)=>{
-    // connection.query(`SELECT * FROM donations INNER JOIN donors on donors.Donor_ID = donations.Donor_ID `,(error,rows)=>{
         connection.query(`SELECT donations.REF, donations.Amount, donations.Date_donated,donations.Item_donated, donations.Received, donations.Anonymous, donors.First_Name, donors.Email, donors.Phone FROM donations INNER JOIN donors on donors.Donor_ID = donations.Donor_ID where donations.Organization_ID = '${Organization_ID}'`,(error,rows)=>{
         if (error) throw error;
         for (let i = 0; i < rows.length; i++) {
             const element = rows[i];
-            // log(element.Date_donated)
             element.Date_donated = moment(element.Date_donated, 'YYYY-MM-DD', 'UTC').format()
             element.Email = decEmail(element.Email)
-            // element.Date_donated = moment(element.Date_donated, 'YYYY-MM-DD', 'UTC').format()
-            // log(element.Date_donated)
             results.push(element)
         }
         log(results)
         response.send(results)
+    })
+})
+
+app.get('/donations-report',(request,response)=>{
+    let res = []
+
+    connection.query(`SELECT donations.REF, donations.Amount, donations.Date_donated,donations.Item_donated, donations.Received, donations.Anonymous, donors.First_Name, donors.Email, donors.Phone FROM donations INNER JOIN donors on donors.Donor_ID = donations.Donor_ID`,(error,results)=>{
+
+        if(error) throw error
+        for (let i = 0; i < results.length; i++) {
+            const element = results[i];
+            element.Date_donated = moment(element.Date_donated, 'YYYY-MM-DD', 'UTC').format()
+            element.Email = decEmail(element.Email)
+            res.push(element)
+        }
+        log(res)
+        response.send(res)
     })
 })
 
@@ -495,6 +453,22 @@ app.put('/update-status', (request,response)=>{
 //Get method to render the donations page
 app.get('/Organization', (request, response) => {
     response.render('donations/organizations')
+})
+
+app.get('/number-of-donations', (request,response)=>{
+    connection.query('SELECT COUNT(*) FROM donors',(error,result)=>{
+        if(error) throw error;
+        response.send(result)
+    })
+    // console.log("YO")
+    // response.send(JSON.stringify("A:'B'"))
+})
+
+app.get('/different-donors',(request,response)=>{
+    connection.query('SELECT DISTINCT Donor_ID FROM donations',(error,result)=>{
+        if(error) throw error;
+        response.send(result)
+    })
 })
 
 //Function to encrypt Emails
@@ -535,9 +509,6 @@ function decPassword(encryptedPassword) {
 
 //Logout route
 app.get('/logout', (request, response) => {
-    // console.log(request.session)
-    // errmessage = ''
-    // Sign-out successful.
     session = request.session
     session.destroy((err) => {
         message = null
@@ -557,24 +528,13 @@ app.get('/get-info', (request, response) => {
     console.log(table);
     connection.query(`SELECT * FROM ${table}`, (err, rows, fileds) => {
         if (err) throw err;
-        // response.send(rows)
-        // console.log("*-*-*--*-*-*");
         let info = rows.map(item => {
-            // console.log(JSON.parse(JSON.stringify(item)));
             item = JSON.parse(JSON.stringify(item))
-                // console.log(item);
             item.Email = decEmail(item.Email)
             return item
         })
-
-        // console.log("*********************");
-        // console.log(info);
         response.send(info)
     })
-
-
-    // console.log("YO")
-    // console.log(req);
 })
 
 //send user session info
