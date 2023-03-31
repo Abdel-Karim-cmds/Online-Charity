@@ -232,6 +232,17 @@ app.get('/donations', (request, response) => {
     })
 })
 
+app.get('/donations-result',(request,response)=>{
+    const {status} = request.query
+    const {Organization_ID} = request.session.user
+    log(status,Organization_ID)
+    connection.query(`SELECT COUNT(*) FROM donations where Received='${status}' AND Organization_ID='${Organization_ID}'`,(err,result)=>{
+        if(err) throw err;
+        log(result)
+        response.send(result)
+    })
+})
+
 //Function to update user details
 app.put('/update-details', (request, response) => {
     const { table, id } = request.query
