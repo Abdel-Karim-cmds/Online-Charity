@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../../assets/css/donations/organization.css">
+    {{!--<link rel="stylesheet" href="../assets/css/Create_donation.css">--}}
 
     <style>
         
@@ -59,6 +60,273 @@
             background-color: #006b57;
             color: #fdd55a;
         }
+
+    .form-control-dark {
+      color: #fff;
+      background-color: #006b57;
+      border-color: #006b57;
+    }
+
+    .form-control-dark:focus {
+      border-color: transparent;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+    }
+
+    
+.container header {
+    position: relative;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.container header::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 3px;
+    width: 27px;
+    border-radius: 8px;
+    background-color: #fdd55a;
+}
+
+
+    .container form {
+    position: relative;
+    margin-top: 16px;
+    min-height: 300px;
+    min-width: 600px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.container form .form {
+    position: absolute;
+    background-color: #fff;
+    transition: 0.3s ease;
+}
+
+.container form .form.second {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+}
+
+form.secActive .form.second {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+}
+
+form.secActive .form.first {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-100%);
+}
+
+.container form .title {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 6px 0;
+    color: #006b57;
+}
+
+.container form .fields {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+form .fields .input-field {
+    display: flex;
+    /* width: calc(100% / 3 - 15px); */
+    flex-direction: column;
+    /* margin: 4px 0; */
+}
+
+.second .fields .input-field {
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+
+.input-field label {
+    font-size: 12px;
+    font-weight: 500;
+    color: #006b57;
+}
+
+.input-field input,
+select {
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    border-radius: 5px;
+    border: 1px solid #fdd55a;
+    padding: 0 15px;
+    height: 42px;
+    width: 200px;
+    margin: 8px 0;
+}
+
+.input-field input :focus,
+.input-field select:focus {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.13);
+}
+
+.input-field select,
+.input-field input[type="date"] {
+    color: #000000;
+}
+
+.input-field input[type="date"]:valid {
+    color: rgb(0, 0, 0);
+}
+
+.container form button,
+.backBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 150px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #006b57;
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: #fdd55a;
+    transition: all 0.3s linear;
+    cursor: pointer;
+    align-items: center;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.container form .btnText {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+form button:hover {
+    color: #fdd55a;
+    background-color: #006b57;
+}
+
+form button i,
+form .backBtn i {
+    margin: 0 6px;
+}
+
+form .buttons {
+    display: flex;
+    align-items: center;
+}
+
+form .buttons button,
+.backBtn {
+    margin-right: 14px;
+}
+
+#submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 45px;
+    max-width: 150px;
+    width: 100%;
+    border: none;
+    outline: none;
+    color: #006b57;
+    border-radius: 5px;
+    margin: 25px 0;
+    background-color: #fdd55a;
+    transition: all 0.3s linear;
+    cursor: pointer;
+    align-items: center;
+    font-family: "Open Sans";
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.container form .btnText {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+form button:hover {
+    color: #fdd55a;
+    background-color: #006b57;
+}
+
+.form button{
+    color: #006b57;
+    background-color: #fdd55a;
+}
+
+form button i,
+form .backBtn i {
+    margin: 0 6px;
+}
+
+form .button {
+    display: flex;
+    align-items: center;
+    
+}
+
+form .buttons button,
+.backBtn {
+    margin-right: 14px;
+}
+@media (max-width: 750px) {
+    .container form {
+        overflow-y: scroll;
+    }
+    .container form::-webkit-scrollbar {
+        display: none;
+    }
+    form .fields .input-field {
+        width: calc(100% / 2 - 15px);
+    }
+}
+
+@media (max-width: 550px) {
+    form .fields .input-field {
+        width: 100%;
+    }
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 8px;
+    word-wrap: break-word;
+    color: #006b57
+}
+
+.camping-section-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-btn-success{
+    background-color: #006b57;
+
+}
     </style>
 </head>
 
@@ -115,37 +383,81 @@
     </nav>
     <!-- Close Header -->
 
-    <div class="box">
-        <h1>About the donation</h1>
-        <p>
-            This donation was created by <span id="name"></span>
-        </p>
-        <p>
-            The goal is to collect <span id="goal"></span> before <span id="date"></span>
-        </p>
+    <div id="popup-1" class="container ml-auto mr-auto">
+            <div id="header">
+                <header>Create Donation</header>
+                <p>
+                This donation was created by <span id="name"></span>
+                </p>
+                <p>
+                The goal is to collect <span id="goal"></span> before <span id="date"></span>
+                </p>
+            </div>
+            
+            </div>
 
-        <form id="donation_form">
-            <label for="items">Item</label>
-            <select id="items" name="items" required>
-                <option value="Cash">Cash</option>
-                <option value="Food">Food</option>
-                <option value="Hygiene products">Hygiene products</option>
-                <option value="Clothes">Clothes</option>
-                <option value="Books">Books</option>
-                <option value="Toys">Toys</option>
-                <option value="Gadgets">Gadgets</option>
-                <option value="Homeware">Homeware</option>
-            </select>
-            <label for="amount">
-                Amount
-            </label>
-            <input type="text" name="amout" id="amount" placeholder="KSH">
-            <label for="anonymous">Would you like to be anonymous?</label>
-            <input type="checkbox" name="anonymous" id="anonymous">
-            <input type="submit" value="Submit">
-        </form>
+            <form>
+                <div class="createDonation">
+                    <div >
+                        <div class="fields">
+                            <table class="table">
 
+                                <tbody>
+
+                                    <tr>
+                                        <th scope="row">Items needed</th>                                      
+                                        </td>
+                                        <td class="input-field">
+                                            <select id="items" name="items" required>
+                                                <option value="Cash">Cash</option>
+                                                <option value="Food">Food</option>
+                                                <option value="Hygiene products">Hygiene products</option>
+                                                <option value="Clothes">Clothes</option>
+                                                <option value="Books">Books</option>
+                                                <option value="Toys">Toys</option>                                           
+                                                <option value="Gadgets">Gadgets</option>
+                                                <option value="Homeware">Homeware</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <th scope="row"> Amount</th>
+                                        </td>
+                                        <td class="input-field">     
+                                        <input type="text" name="amout" id="amount" placeholder="KSH">
+                                        </td>
+                                    </tr>   
+
+                                    <tr>
+                                        <th scope="row"> Would you like to be anonymous?</th>
+                                        </td>
+                                        <td class="input-field">                                            
+                                        <input type="checkbox" name="anonymous" id="anonymous">
+                                        </td>                                       
+                                    </tr>   
+
+
+                                </tbody>                          
+                            </table>
+                           {{!-- <span class="ml-auto mr-auto text-danger" id="errorMessage">Please enter a valid date starting from Tomorrow</span> --}}
+                        </div>
+                    </div>
+
+                    <button class="submit">
+                        <span class="btnText">Submit</span>
+                        
+                    </button>
+                </div>
+
+            
+                </div>
+            </form>
+        </div>
     </div>
+  </div>
+
+
 
     {{!-- <button class="btn btn-success" id="unique" data-toggle="modal" data-target="#someBox" style="display: none;">BTN</button> --}}
     <!-- Start Footer -->
@@ -199,20 +511,13 @@
                                     class="text-decoration-none text-light" href="index.html">Home</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                    class="text-decoration-none text-light py-1" href="about.html">About Us</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="/charity">Charity</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                    class="text-decoration-none text-light py-1" href="work.html">Work</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="/Organization">Organizations</a>
                             </li>
                             <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i></i><a
-                                    class="text-decoration-none text-light py-1" href="pricing.html">Price</a>
-                            </li>
-                            <li class="pb-2">
-                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a
-                                    class="text-decoration-none text-light py-1" href="contact.html">Contact</a>
+                                <i class='bx-fw bx bxs-chevron-right bx-xs'></i><a class="text-decoration-none text-light py-1" href="/contact-us">Contact</a>
                             </li>
                         </ul>
                 </div>
@@ -223,11 +528,11 @@
                     <ul class="list-unstyled text-light light-300">
                         <li class="pb-2">
                             <i class='bx-fw bx bx-phone bx-xs'></i><a class="text-decoration-none text-light py-1"
-                                href="tel:010-020-0340">010-020-0340</a>
+                                href="tel:010-020-0340">072-020-0340</a>
                         </li>
                         <li class="pb-2">
                             <i class='bx-fw bx bx-mail-send bx-xs'></i><a class="text-decoration-none text-light py-1"
-                                href="mailto:info@company.com">info@company.com</a>
+                                href="mailto:info@company.com">info@charity.com</a>
                         </li>
                     </ul>
                 </div>
@@ -275,3 +580,4 @@
 </body>
 
 </html>
+
