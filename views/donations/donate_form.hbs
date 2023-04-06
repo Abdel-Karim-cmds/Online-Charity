@@ -61,6 +61,8 @@
             color: #fdd55a;
         }
 
+        
+
     .form-control-dark {
       color: #fff;
       background-color: #006b57;
@@ -235,7 +237,7 @@ form .buttons button,
     margin-right: 14px;
 }
 
-#submit {
+/*#submit {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -254,8 +256,43 @@ form .buttons button,
     font-family: "Open Sans";
     font-size: 16px;
     font-weight: 500;
+} */
+
+.btnText {
+    padding: .4em 2em;
+    display: flex;
+    position: relative;
+    padding: 5px 10px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fdd55a;
+    background-color: #006b57;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 9px #00342a;	
+    
+} 
+
+.btnText:hover {
+    color: #fdd55a;
+    background-color: #00967b;
 }
 
+.btnText:active {
+    color: #fdd55a;
+    background-color: #006b57;
+    box-shadow: 0 5px #00342a;
+    transform: translateY(4px);
+}
+
+.btnsubmit{
+      padding: 10px;
+      padding-left: 700px;
+  justify-content: center;
+}
 .container form .btnText {
     font-size: 14px;
     font-weight: 400;
@@ -444,10 +481,10 @@ td {
                         </div>
                     </div>
 
-                    <button class="submit">
-                        <span class="btnText">Submit</span>
-                        
-                    </button>
+                    <div class="btnsubmit">
+ <button class="btnText">Submit</button>
+                    </div>
+                   
                 </div>
 
             

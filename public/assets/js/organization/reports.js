@@ -16,7 +16,7 @@
 function makeDonationsGraph(received,pending){
     
     const summed = [pending, received]
-    var barColors = ["#006b57", "#fdd55a", ];
+    var barColors = ["#fdd55a", "#006b57"];
     var ch = new Chart("cht", {
         type: "pie",
         data: {

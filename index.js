@@ -2,15 +2,11 @@
 const express = require('express')
 const port = 3000
 const app = express()
-    // const path = require('path')
 const mysql = require('mysql')
 const bodyparser = require("body-parser");
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded({ entended: false }))
 const crypto = require('crypto')
-    // const cryptoJS = require('crypto-js')
-    // const CryptoJS = require('cryptojs')
-    // const bcrypt = require('bcrypt')
 const uuid4 = require('uuid4')
 
 const cookieParser = require("cookie-parser");
@@ -285,7 +281,6 @@ app.get('/report/:view',(request,response)=>{
     response.render('admin/reports')
 })
 
-
 //Submmit a donation made by the user
 app.post('/post-donation', (request, response) => {
     const {item, amount, anonymous,org} = request.body
@@ -301,7 +296,6 @@ app.post('/post-donation', (request, response) => {
         })
     })
 })
-
 
 //GET method to get the donations a user made
 app.get('/get-user-donations',(request,response)=>{
@@ -337,8 +331,6 @@ app.post('/signup-donor', (request, response) => {
 
 //Function to signup the Orgnization
 app.post('/signup-organization', (request, response) => {
-    // const { Donor_Password } = request.body
-    // console.log(request.body)
     let Organization_info = request.body
     Organization_info.Organization_Email = EncEmail(Organization_info.Organization_Email)
     Organization_info.Organization_Password = EncPass(Organization_info.Organization_Password)
@@ -412,7 +404,6 @@ app.post('/login', async(request, response) => {
     }
 
 })
-
 
 app.get('/organization-donations',(request,response)=>{
     // response.render('Organization-donations')
@@ -559,7 +550,6 @@ app.get('/get-session-user', (request, response) => {
 app.get('*', (request, response) => {
     response.render('Not Found')
 })
-
 
 //Starting the project
 app.listen(port, () => console.log(`Server is listening on port ${port}`))
