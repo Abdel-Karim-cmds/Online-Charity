@@ -2,10 +2,6 @@ const path = window.location.href.split('/')
 const id = path[4]
 var orgID;
 
-console.log(path)
-console.log(id)
-
-
 function display(message) {
     let err = document.querySelector('.pop-up')
     err.classList.toggle('hide')
@@ -28,22 +24,22 @@ async function getDonation() {
 
 document.querySelector('form').addEventListener('submit', e => {
     e.preventDefault()
-        // console.log("1")
-        // console.log(document.getElementById('items').value)
-        // console.log(document.getElementById('amount').value)
-    if (document.getElementById('amount').value == false) {
-        // display("Please fill in the amount")
+    const amount = document.getElementById('amount').value;
+    if (amount == false) {
         document.getElementById('exampleModalLabel').innerText = 'Error'
         document.getElementById('message').innerText = 'Please fill in the amont'
         document.getElementById('unique').click()
-        // console.log("Empty");
-        // document.getElementById('unique').click()
+    }
+    else if(!(/^\d+$/.test(amount)) || parseInt(amount)<0){
+        document.getElementById('exampleModalLabel').innerText = 'Error'
+        document.getElementById('message').innerText = 'Please fill in a correct amont'
+        document.getElementById('unique').click()
+        
     }
     else{
 
         postDonation()
     }
-    // console.log(document.getElementById('anonymous').checked)
 })
 
 async function postDonation() {

@@ -6,9 +6,6 @@
     const data = await response.json()
     getUserDonations(data.Donor_ID)
     console.log(data);
-    // console.log(data.Donor_ID   )
-    // userID = data.Donor_ID;
-    // console.log(userID)
     populateDetails(data)
 })()
 
@@ -23,8 +20,8 @@ function populateDetails(detail) {
 async function getUserDonations(id){
     const response = await fetch(`/get-user-donations?id=${id}`)
     const data = await response.json()
-    console.log(data)
     populateDonations(data)
+    makeGraph(data)
 }
 
 function populateDonations(donations){
@@ -32,7 +29,6 @@ function populateDonations(donations){
 
     for (let i = 0; i < donations.length; i++) {
         const element = donations[i];
-        console.log(element)
         let p1 = document.createElement('p')
         p1.classList = 'mb-1'
         p1.style.fontSize = '0.77rem'
@@ -56,4 +52,35 @@ function unit(element){
         return 'Kg'
     else
         return ''
+}
+
+function makeGraph(donations){
+    // console.log(donations)
+    const received = donations.filter(donation => donation.Received === 'YES')
+    const pending = donations.filter(donation => donation.Received === 'NO')
+    console.log(received)
+    console.log(pending)
+    const summed = [received.length, pending.length]
+    var barColors = ["#006b57", "#fdd55a", ];
+    var ch = new Chart("cht", {
+        type: "pie",
+        data: {
+            labels: ["Received", "Pending" ],
+            datasets: [{
+                fill: false,
+                lineTension: 0,
+                backgroundColor: barColors,
+                borderColor: barColors,
+                borderWidth: 4,
+                data: summed,
+            }, ],
+        },
+
+        options: {
+            title: {
+              display: true,
+              text: "Received and Pending Donations"
+            }
+          }
+    });
 }

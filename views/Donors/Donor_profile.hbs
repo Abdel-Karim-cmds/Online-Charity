@@ -9,6 +9,7 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/css/boxicon.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <title>My Profile</title>
     <style>
       .bg {
@@ -59,10 +60,15 @@
               class="rounded-circle img-fluid" style="width: 150px;">
             <h5 class="my-3" id="firstName">Something for now</h5>
             <div class="d-flex justify-content-center mb-2">
-              <button type="button" class="btn">Edit Profile</button>
+              {{!-- <button type="button" class="btn">Edit Profile</button> --}}
               <a class="btn btn-outline-primary ms-2" href="/logout" role="button">Logout</a>
             </div>
           </div>
+        </div>
+        
+        <div class="card mb-5">
+        <center><canvas id="cht" style="max-width: 700px;width: 100%;"></canvas></center>
+          
         </div>
       </div>
 

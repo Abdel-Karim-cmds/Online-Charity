@@ -47,8 +47,11 @@ const connection = mysql.createConnection({
     user: 'root',
     password: '',
     database: 'online_charity',
-    port: '3308'
+    // port: '3308'
 });
+
+log(decEmail('6ad8303ca3bb1eb080b921ec1065725fd6084d2bd6f80fee8be7d39a3f187fc8'))
+log(decPassword('0d612817e65f1895d283d4c83c039c38'))
 
 //establish the connection to the database
 connection.connect(function(err) {
