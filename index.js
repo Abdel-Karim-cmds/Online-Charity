@@ -47,7 +47,7 @@ const connection = mysql.createConnection({
     user: 'root',
     password: '',
     database: 'online_charity',
-    port: '3308'
+    // port: '3308'
 });
 
 log(decEmail('6ad8303ca3bb1eb080b921ec1065725fd6084d2bd6f80fee8be7d39a3f187fc8'))
@@ -324,7 +324,9 @@ app.post('/signup-donor', (request, response) => {
             }
 
             console.log("Record inserted")
-            return response.status(200).redirect(301, '/login-page')
+            return response.status(200).json({
+                message:' Success'
+            })
         })
 
     } catch (error) {
@@ -348,7 +350,9 @@ app.post('/signup-organization', (request, response) => {
 
             console.log("Organization Added")
                 // console.log("Record inserted")
-            return response.status(200).redirect(301, '/login-page')
+            return response.status(200).json({
+                message:' Success'
+            })
         })
 
     } catch (error) {

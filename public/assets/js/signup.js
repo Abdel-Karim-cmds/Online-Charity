@@ -57,6 +57,7 @@ async function SingUp_Donors() {
         display(outcome.message)
     if (response.status === 200)
         display("New Donor added")
+        setTimeout(()=>{window.location.href = '/login-page'},2000)
 
 }
 

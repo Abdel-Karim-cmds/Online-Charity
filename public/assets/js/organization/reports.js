@@ -39,3 +39,8 @@ function makeDonationsGraph(received,pending){
           }
     });
 }
+
+
+    function printImg() {
+        window.print()
+      }
